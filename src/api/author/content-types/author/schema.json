@@ -13,16 +13,20 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "avatar": {
+    "email": {
+      "type": "email"
+    },
+    "picture": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos"]
+      "allowedTypes": ["images"]
     },
-    "email": {
-      "type": "string"
+    "bio": {
+      "type": "text"
     },
     "articles": {
       "type": "relation",
@@ -32,3 +36,4 @@
     }
   }
 }
+
