@@ -55,9 +55,10 @@
     "cover": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
-
     "isFeatured": {
       "type": "boolean",
       "default": false
@@ -70,7 +71,6 @@
       "type": "boolean",
       "default": false
     },
-
     "videoUrl": {
       "type": "string"
     },
@@ -81,7 +81,6 @@
       "type": "integer",
       "default": 0
     },
-
     "category": {
       "type": "relation",
       "relation": "manyToOne",
@@ -106,7 +105,6 @@
       "target": "api::comment.comment",
       "mappedBy": "article"
     },
-
     "blocks": {
       "type": "dynamiczone",
       "components": [

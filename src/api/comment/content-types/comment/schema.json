@@ -10,6 +10,7 @@
   "options": {
     "draftAndPublish": false
   },
+  "pluginOptions": {},
   "attributes": {
     "content": {
       "type": "text",

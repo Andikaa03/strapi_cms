@@ -45,18 +45,6 @@
       "repeatable": false,
       "component": "shared.seo"
     },
-    "logoLight": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"]
-    },
-    "logoDark": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"]
-    },
     "heroBanner": {
       "type": "media",
       "multiple": false,
@@ -85,6 +73,52 @@
       "type": "string"
     },
     "adBannerSidebarLink": {
+      "type": "string"
+    },
+    "socialRssSubscribers": {
+      "type": "integer",
+      "default": 0
+    },
+    "socialFacebookFans": {
+      "type": "integer",
+      "default": 0
+    },
+    "socialInstagramFollowers": {
+      "type": "integer",
+      "default": 0
+    },
+    "socialYoutubeSubscribers": {
+      "type": "integer",
+      "default": 0
+    },
+    "socialTwitterFollowers": {
+      "type": "integer",
+      "default": 0
+    },
+    "socialPinterestFollowers": {
+      "type": "integer",
+      "default": 0
+    },
+    "socialTotalFollowers": {
+      "type": "biginteger",
+      "default": 0
+    },
+    "socialRssUrl": {
+      "type": "string"
+    },
+    "socialFacebookUrl": {
+      "type": "string"
+    },
+    "socialInstagramUrl": {
+      "type": "string"
+    },
+    "socialYoutubeUrl": {
+      "type": "string"
+    },
+    "socialTwitterUrl": {
+      "type": "string"
+    },
+    "socialPinterestUrl": {
       "type": "string"
     }
   }
