@@ -9,6 +9,7 @@ export default ({ env }) => ({
     config: {
       provider: 'aws-s3',
       providerOptions: {
+        baseUrl: 'https://media.shottyodharaprotidin.com',
         s3Options: {
           credentials: {
             accessKeyId: env('AWS_ACCESS_KEY_ID'),

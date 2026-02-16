@@ -14,6 +14,7 @@ export default [
             'blob:',
             'market-assets.strapi.io',
             'shottyodharaprotidin-media.s3.ap-southeast-2.amazonaws.com',
+            'media.shottyodharaprotidin.com',
           ],
           'media-src': [
             "'self'",
@@ -21,6 +22,7 @@ export default [
             'blob:',
             'market-assets.strapi.io',
             'shottyodharaprotidin-media.s3.ap-southeast-2.amazonaws.com',
+            'media.shottyodharaprotidin.com',
           ],
           upgradeInsecureRequests: null,
         },
