@@ -22,6 +22,13 @@ export default ({ env }) => ({
     promoteEE: env.bool('FLAG_PROMOTE_EE', true),
   },
 
+  preview: {
+  enabled: true,
+  config: {
+    allowedOrigins: env("CLIENT_URL"),  // Usually your frontend application URL
+    // …
+        }
+  },
   // Required for production admin URL
   url: env('STRAPI_ADMIN_URL', '/admin'),
 });
