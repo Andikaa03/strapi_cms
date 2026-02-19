@@ -47,6 +47,24 @@
       "relation": "manyToOne",
       "target": "api::article.article",
       "inversedBy": "comments"
+    },
+    "website": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::comment.comment",
+      "inversedBy": "children"
+    },
+    "children": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "parent"
     }
   }
 }

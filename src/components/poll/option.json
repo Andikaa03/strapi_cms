@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_poll_options",
+  "info": {
+    "displayName": "Poll Option",
+    "description": "Option for poll voting"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "voteCount": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

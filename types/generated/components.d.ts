@@ -13,6 +13,18 @@ export interface EpaperPage extends Struct.ComponentSchema {
   };
 }
 
+export interface PollOption extends Struct.ComponentSchema {
+  collectionName: 'components_poll_options';
+  info: {
+    description: 'Option for poll voting';
+    displayName: 'Poll Option';
+  };
+  attributes: {
+    text: Schema.Attribute.String & Schema.Attribute.Required;
+    voteCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -79,6 +91,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'epaper.page': EpaperPage;
+      'poll.option': PollOption;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
