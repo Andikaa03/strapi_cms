@@ -13,19 +13,22 @@ export default [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:'],
+          'connect-src': ["'self'", 'https:', process.env.PREVIEW_FRONTEND_URL || 'http://localhost:3000'],
           'img-src': [
             "'self'",
             'data:',
             'blob:',
             'market-assets.strapi.io',
+            process.env.PREVIEW_FRONTEND_URL || 'http://localhost:3000',
           ],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
             'market-assets.strapi.io',
+            process.env.PREVIEW_FRONTEND_URL || 'http://localhost:3000',
           ],
+          'frame-src': ["'self'", process.env.PREVIEW_FRONTEND_URL || 'http://localhost:3000'],
           upgradeInsecureRequests: null,
         },
       },
