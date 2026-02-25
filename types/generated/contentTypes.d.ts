@@ -1142,34 +1142,20 @@ export interface ApiMenuItemMenuItem extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    menu_item: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::menu-item.menu-item'
-    >;
-    menu_items: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::menu-item.menu-item'
-    >;
-    openInNewTab: Schema.Attribute.Boolean &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Schema.Attribute.DefaultTo<false>;
-    order: Schema.Attribute.Integer &
+    menuItems: Schema.Attribute.DynamicZone<
+      [
+        'navigation.base-link',
+        'navigation.menu-button',
+        'navigation.dropdown-menu',
+        'navigation.mega-menu',
+      ]
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

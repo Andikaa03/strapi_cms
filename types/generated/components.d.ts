@@ -28,6 +28,122 @@ export interface FaqFaqItem extends Struct.ComponentSchema {
   };
 }
 
+export interface NavigationBaseLink extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_base_links';
+  info: {
+    description: '';
+    displayName: 'Base Link';
+    icon: 'link';
+  };
+  attributes: {
+    openInNewTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface NavigationDropdownHeader extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_dropdown_headers';
+  info: {
+    description: '';
+    displayName: 'Dropdown Header';
+    icon: 'heading';
+  };
+  attributes: {
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface NavigationDropdownMenu extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_dropdown_menus';
+  info: {
+    description: '';
+    displayName: 'Dropdown Menu';
+    icon: 'arrow-down';
+  };
+  attributes: {
+    subMenus: Schema.Attribute.DynamicZone<
+      [
+        'navigation.base-link',
+        'navigation.dropdown-header',
+        'navigation.nested-dropdown',
+      ]
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface NavigationMegaMenu extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_mega_menus';
+  info: {
+    description: '';
+    displayName: 'Mega Menu';
+    icon: 'layer-group';
+  };
+  attributes: {
+    sections: Schema.Attribute.Component<'navigation.mega-menu-section', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface NavigationMegaMenuLink extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_mega_menu_links';
+  info: {
+    description: '';
+    displayName: 'Mega Menu Link';
+    icon: 'link';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface NavigationMegaMenuSection extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_mega_menu_sections';
+  info: {
+    description: '';
+    displayName: 'Mega Menu Section';
+    icon: 'grid';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    links: Schema.Attribute.Component<'navigation.mega-menu-link', true>;
+  };
+}
+
+export interface NavigationMenuButton extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_menu_buttons';
+  info: {
+    description: '';
+    displayName: 'Menu Button';
+    icon: 'cursor';
+  };
+  attributes: {
+    buttonType: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'outline']
+    > &
+      Schema.Attribute.DefaultTo<'primary'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface NavigationNestedDropdown extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_nested_dropdowns';
+  info: {
+    description: '';
+    displayName: 'Nested Dropdown';
+    icon: 'arrow-right';
+  };
+  attributes: {
+    subMenus: Schema.Attribute.Component<'navigation.base-link', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface PollOption extends Struct.ComponentSchema {
   collectionName: 'components_poll_options';
   info: {
@@ -107,6 +223,14 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'epaper.page': EpaperPage;
       'faq.faq-item': FaqFaqItem;
+      'navigation.base-link': NavigationBaseLink;
+      'navigation.dropdown-header': NavigationDropdownHeader;
+      'navigation.dropdown-menu': NavigationDropdownMenu;
+      'navigation.mega-menu': NavigationMegaMenu;
+      'navigation.mega-menu-link': NavigationMegaMenuLink;
+      'navigation.mega-menu-section': NavigationMegaMenuSection;
+      'navigation.menu-button': NavigationMenuButton;
+      'navigation.nested-dropdown': NavigationNestedDropdown;
       'poll.option': PollOption;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
