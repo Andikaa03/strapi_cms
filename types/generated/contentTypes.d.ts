@@ -1112,7 +1112,7 @@ export interface ApiLatestVideoNewsLatestVideoNews
   };
 }
 
-export interface ApiMenuItemMenuItem extends Struct.CollectionTypeSchema {
+export interface ApiMenuItemMenuItem extends Struct.SingleTypeSchema {
   collectionName: 'menu_items';
   info: {
     displayName: 'Menu Item';
@@ -1131,18 +1131,13 @@ export interface ApiMenuItemMenuItem extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::menu-item.menu-item'
-    >;
-    location: Schema.Attribute.Enumeration<['header', 'footer', 'sidebar']> &
+    footerMenu: Schema.Attribute.Component<'navigation.base-link', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    menuItems: Schema.Attribute.DynamicZone<
+    headerMenu: Schema.Attribute.DynamicZone<
       [
         'navigation.base-link',
         'navigation.menu-button',
@@ -1155,8 +1150,13 @@ export interface ApiMenuItemMenuItem extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::menu-item.menu-item'
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String &
+    sidebarMenu: Schema.Attribute.Component<'navigation.base-link', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
