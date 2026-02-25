@@ -13,6 +13,21 @@ export interface EpaperPage extends Struct.ComponentSchema {
   };
 }
 
+export interface FaqFaqItem extends Struct.ComponentSchema {
+  collectionName: 'components_faq_faq_items';
+  info: {
+    description: 'Individual FAQ question and answer';
+    displayName: 'FAQ Item';
+    icon: 'question-circle';
+  };
+  attributes: {
+    answer: Schema.Attribute.Text & Schema.Attribute.Required;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    question: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface PollOption extends Struct.ComponentSchema {
   collectionName: 'components_poll_options';
   info: {
@@ -91,6 +106,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'epaper.page': EpaperPage;
+      'faq.faq-item': FaqFaqItem;
       'poll.option': PollOption;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
