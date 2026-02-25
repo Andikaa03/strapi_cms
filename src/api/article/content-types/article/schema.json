@@ -36,7 +36,12 @@
       "required": true
     },
     "content": {
-      "type": "richtext",
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "output": "HTML",
+        "preset": "defaultHtml"
+      },
       "pluginOptions": {
         "i18n": {
           "localized": true

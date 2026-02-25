@@ -14,11 +14,15 @@ export default [
         useDefaults: true,
         directives: {
           'connect-src': ["'self'", 'https:', process.env.PREVIEW_FRONTEND_URL || 'http://localhost:3000'],
+          'script-src': ["'self'", "'unsafe-inline'", 'cdn.ckeditor.com'],
+          'style-src': ["'self'", "'unsafe-inline'", 'cdn.ckeditor.com'],
+          'font-src': ["'self'", 'cdn.ckeditor.com'],
           'img-src': [
             "'self'",
             'data:',
             'blob:',
             'market-assets.strapi.io',
+            'cdn.ckeditor.com',
             process.env.PREVIEW_FRONTEND_URL || 'http://localhost:3000',
           ],
           'media-src': [
