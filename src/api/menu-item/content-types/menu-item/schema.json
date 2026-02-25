@@ -1,5 +1,5 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "menu_items",
   "info": {
     "singularName": "menu-item",
@@ -15,28 +15,8 @@
     }
   },
   "attributes": {
-    "title": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "location": {
-      "type": "enumeration",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "enum": [
-        "header",
-        "footer",
-        "sidebar"
-      ]
-    },
-    "menuItems": {
+
+    "headerMenu": {
       "type": "dynamiczone",
       "components": [
         "navigation.base-link",
@@ -44,6 +24,26 @@
         "navigation.dropdown-menu",
         "navigation.mega-menu"
       ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "footerMenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.base-link",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "sidebarMenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.base-link",
       "pluginOptions": {
         "i18n": {
           "localized": true
