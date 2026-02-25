@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_navigation_dropdown_headers",
+  "info": {
+    "displayName": "Dropdown Header",
+    "icon": "heading",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

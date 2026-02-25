@@ -1,14 +1,14 @@
 {
-  "kind": "collectionType",
-  "collectionName": "faqs",
+  "kind": "singleType",
+  "collectionName": "faq_page",
   "info": {
     "singularName": "faq",
     "pluralName": "faqs",
     "displayName": "FAQ",
-    "description": "Frequently Asked Questions"
+    "description": "FAQ page content with header image and list of FAQ items"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {
     "i18n": {
@@ -16,31 +16,21 @@
     }
   },
   "attributes": {
-    "question": {
-      "type": "string",
-      "required": true,
+    "faqHeaderImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "faq.faq-item",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
-    },
-    "answer": {
-      "type": "text",
-      "required": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "order": {
-      "type": "integer",
-      "default": 0
-    },
-    "isActive": {
-      "type": "boolean",
-      "default": true
     }
   }
 }

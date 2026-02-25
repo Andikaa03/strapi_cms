@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_faq_faq_items",
+  "info": {
+    "displayName": "FAQ Item",
+    "icon": "question-circle",
+    "description": "Individual FAQ question and answer"
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "answer": {
+      "type": "text",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

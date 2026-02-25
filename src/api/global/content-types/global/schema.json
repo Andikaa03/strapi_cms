@@ -57,30 +57,6 @@
       "required": false,
       "allowedTypes": ["images"]
     },
-    "faqHeaderImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"]
-    },
-    "adBannerTop": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"]
-    },
-    "adBannerSidebar": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"]
-    },
-    "adBannerTopLink": {
-      "type": "string"
-    },
-    "adBannerSidebarLink": {
-      "type": "string"
-    },
     "socialRssSubscribers": {
       "type": "integer",
       "default": 0
@@ -126,14 +102,6 @@
     },
     "socialPinterestUrl": {
       "type": "string"
-    },
-    "liveTvUrl": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
     },
     "contactAddress": {
       "type": "text",

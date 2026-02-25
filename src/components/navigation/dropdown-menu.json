@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_navigation_dropdown_menus",
+  "info": {
+    "displayName": "Dropdown Menu",
+    "icon": "arrow-down",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subMenus": {
+      "type": "dynamiczone",
+      "components": [
+        "navigation.base-link",
+        "navigation.dropdown-header",
+        "navigation.nested-dropdown"
+      ]
+    }
+  }
+}

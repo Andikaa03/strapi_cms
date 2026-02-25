@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_navigation_base_links",
+  "info": {
+    "displayName": "Base Link",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "openInNewTab": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

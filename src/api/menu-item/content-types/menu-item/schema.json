@@ -1,5 +1,5 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "menu_items",
   "info": {
     "singularName": "menu-item",
@@ -15,63 +15,40 @@
     }
   },
   "attributes": {
-    "title": {
-      "type": "string",
+
+    "headerMenu": {
+      "type": "dynamiczone",
+      "components": [
+        "navigation.base-link",
+        "navigation.menu-button",
+        "navigation.dropdown-menu",
+        "navigation.mega-menu"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "slug": {
-      "type": "string",
+    "footerMenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.base-link",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "order": {
-      "type": "integer",
+    "sidebarMenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.base-link",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
-    },
-    "menu_item": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::menu-item.menu-item",
-      "inversedBy": "menu_items"
-    },
-    "menu_items": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::menu-item.menu-item",
-      "mappedBy": "menu_item"
-    },
-    "openInNewTab": {
-      "type": "boolean",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "default": false
-    },
-    "location": {
-      "type": "enumeration",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "enum": [
-        "header",
-        "footer",
-        "sidebar"
-      ]
     }
   }
 }

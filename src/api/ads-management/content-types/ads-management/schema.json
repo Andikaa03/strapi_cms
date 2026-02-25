@@ -1,0 +1,56 @@
+{
+  "kind": "singleType",
+  "collectionName": "ads_managements",
+  "info": {
+    "singularName": "ads-management",
+    "pluralName": "ads-managements",
+    "displayName": "Ads Management",
+    "description": "Manage banner advertisements across the site"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "headerBanner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "headerBannerLink": {
+      "type": "string"
+    },
+    "articleBanner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "articleBannerLink": {
+      "type": "string"
+    },
+    "homeTopBanner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "homeTopBannerLink": {
+      "type": "string"
+    },
+    "homeSecondBanner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "homeSecondBannerLink": {
+      "type": "string"
+    }
+  }
+}
