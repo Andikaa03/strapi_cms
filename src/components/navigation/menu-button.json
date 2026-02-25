@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_navigation_menu_buttons",
+  "info": {
+    "displayName": "Menu Button",
+    "icon": "cursor",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "buttonType": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "outline"
+      ],
+      "default": "primary"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_navigation_nested_dropdowns",
+  "info": {
+    "displayName": "Nested Dropdown",
+    "icon": "arrow-right",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subMenus": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.base-link"
+    }
+  }
+}

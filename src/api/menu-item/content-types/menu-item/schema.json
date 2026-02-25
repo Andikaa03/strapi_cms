@@ -23,43 +23,6 @@
         }
       }
     },
-    "slug": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "order": {
-      "type": "integer",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "menu_item": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::menu-item.menu-item",
-      "inversedBy": "menu_items"
-    },
-    "menu_items": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::menu-item.menu-item",
-      "mappedBy": "menu_item"
-    },
-    "openInNewTab": {
-      "type": "boolean",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "default": false
-    },
     "location": {
       "type": "enumeration",
       "pluginOptions": {
@@ -72,6 +35,20 @@
         "footer",
         "sidebar"
       ]
+    },
+    "menuItems": {
+      "type": "dynamiczone",
+      "components": [
+        "navigation.base-link",
+        "navigation.menu-button",
+        "navigation.dropdown-menu",
+        "navigation.mega-menu"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
