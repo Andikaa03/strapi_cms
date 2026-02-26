@@ -20,7 +20,8 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": ["images"],
+      "description": "Recommended size: 728x90px"
     },
     "headerBannerLink": {
       "type": "string"
@@ -29,7 +30,8 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": ["images"],
+      "description": "Recommended size: 300x250px or 336x280px"
     },
     "articleBannerLink": {
       "type": "string"
@@ -38,7 +40,8 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": ["images"],
+      "description": "Recommended size: 728x90px"
     },
     "homeTopBannerLink": {
       "type": "string"
@@ -47,7 +50,8 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": ["images"],
+      "description": "Recommended size: 300x250px or 336x280px"
     },
     "homeSecondBannerLink": {
       "type": "string"

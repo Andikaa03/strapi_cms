@@ -21,6 +21,7 @@
       "allowedTypes": [
         "images"
       ],
+      "description": "Recommended height: 50px",
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -49,6 +50,7 @@
       "allowedTypes": [
         "images"
       ],
+      "description": "Recommended size: 180x180px",
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -109,6 +111,17 @@
       "allowedTypes": [
         "images"
       ],
+      "description": "Recommended size: 1920x1000px",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "menu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.base-link",
       "pluginOptions": {
         "i18n": {
           "localized": true

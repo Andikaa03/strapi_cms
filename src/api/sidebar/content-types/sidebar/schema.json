@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "menu_items",
+  "collectionName": "sidebars",
   "info": {
-    "singularName": "menu-item",
-    "pluralName": "menu-items",
-    "displayName": "Menu Item"
+    "singularName": "sidebar",
+    "pluralName": "sidebars",
+    "displayName": "Sidebar"
   },
   "options": {
     "draftAndPublish": true
@@ -15,32 +15,28 @@
     }
   },
   "attributes": {
-
-    "headerMenu": {
-      "type": "dynamiczone",
-      "components": [
-        "navigation.base-link",
-        "navigation.menu-button",
-        "navigation.dropdown-menu",
-        "navigation.mega-menu"
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
       ],
+      "description": "Recommended height: 50px",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "footerMenu": {
-      "type": "component",
-      "repeatable": true,
-      "component": "navigation.base-link",
+    "description": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "sidebarMenu": {
+    "menu": {
       "type": "component",
       "repeatable": true,
       "component": "navigation.base-link",
