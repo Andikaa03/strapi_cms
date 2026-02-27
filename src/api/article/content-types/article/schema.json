@@ -62,7 +62,8 @@
       "multiple": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "description": "Recommended size: 1200x675px (Ratio 16:9)"
     },
     "isFeatured": {
       "type": "boolean",
