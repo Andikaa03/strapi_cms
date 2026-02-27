@@ -21,7 +21,8 @@
         "navigation.base-link",
         "navigation.menu-button",
         "navigation.dropdown-menu",
-        "navigation.mega-menu"
+        "navigation.mega-menu",
+        "navigation.video-menu"
       ],
       "pluginOptions": {
         "i18n": {

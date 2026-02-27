@@ -144,6 +144,33 @@ export interface NavigationNestedDropdown extends Struct.ComponentSchema {
   };
 }
 
+export interface NavigationVideoMenu extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_video_menus';
+  info: {
+    description: 'A mega menu displaying up to 5 video items';
+    displayName: 'Video Menu';
+    icon: 'video';
+  };
+  attributes: {
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    videos: Schema.Attribute.Component<'navigation.video-menu-item', true>;
+  };
+}
+
+export interface NavigationVideoMenuItem extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_video_menu_items';
+  info: {
+    description: 'An individual video item for the Video Mega Menu';
+    displayName: 'Video Menu Item';
+    icon: 'play';
+  };
+  attributes: {
+    thumbnail: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface PollOption extends Struct.ComponentSchema {
   collectionName: 'components_poll_options';
   info: {
@@ -231,6 +258,8 @@ declare module '@strapi/strapi' {
       'navigation.mega-menu-section': NavigationMegaMenuSection;
       'navigation.menu-button': NavigationMenuButton;
       'navigation.nested-dropdown': NavigationNestedDropdown;
+      'navigation.video-menu': NavigationVideoMenu;
+      'navigation.video-menu-item': NavigationVideoMenuItem;
       'poll.option': PollOption;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;

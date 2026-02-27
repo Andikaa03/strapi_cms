@@ -105,38 +105,6 @@
     },
     "socialPinterestUrl": {
       "type": "string"
-    },
-    "contactAddress": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "contactPhone": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "contactEmail": {
-      "type": "email",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "contactMapLat": {
-      "type": "float",
-      "default": 23.8103968
-    },
-    "contactMapLng": {
-      "type": "float",
-      "default": 90.41256666
     }
   }
 }
