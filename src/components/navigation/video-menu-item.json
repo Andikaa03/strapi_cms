@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_navigation_video_menu_items",
+  "info": {
+    "displayName": "Video Menu Item",
+    "icon": "play",
+    "description": "An individual video item for the Video Mega Menu"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

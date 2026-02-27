@@ -1,0 +1,50 @@
+{
+  "kind": "singleType",
+  "collectionName": "header_tops",
+  "info": {
+    "singularName": "header-top",
+    "pluralName": "header-tops",
+    "displayName": "Header Top",
+    "description": "Top-most navigation and social links"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "contactUrl": {
+      "type": "string"
+    },
+    "donationUrl": {
+      "type": "string"
+    },
+    "signUpUrl": {
+      "type": "string"
+    },
+    "loginUrl": {
+      "type": "string"
+    },
+    "socialFacebookUrl": {
+      "type": "string"
+    },
+    "socialTwitterUrl": {
+      "type": "string"
+    },
+    "socialVkUrl": {
+      "type": "string"
+    },
+    "socialInstagramUrl": {
+      "type": "string"
+    },
+    "socialYoutubeUrl": {
+      "type": "string"
+    },
+    "socialVimeoUrl": {
+      "type": "string"
+    }
+  }
+}

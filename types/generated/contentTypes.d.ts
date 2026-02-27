@@ -744,10 +744,10 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiContactContact extends Struct.CollectionTypeSchema {
+export interface ApiContactContact extends Struct.SingleTypeSchema {
   collectionName: 'contacts';
   info: {
-    description: 'Contact form submissions';
+    description: 'Details for the Contact Page';
     displayName: 'Contact';
     pluralName: 'contacts';
     singularName: 'contact';
@@ -755,25 +755,106 @@ export interface ApiContactContact extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: false;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
+    contactAddress: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    contactDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    contactEmail: Schema.Attribute.Email &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    contactInfoTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    contactMapLat: Schema.Attribute.Float &
+      Schema.Attribute.DefaultTo<23.8103968>;
+    contactMapLng: Schema.Attribute.Float &
+      Schema.Attribute.DefaultTo<90.41256666>;
+    contactPhone: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    formEmailLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    formMessageLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    formNameLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    formSubjectLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    formSubmitButtonText: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    formSubtitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    formWebsiteLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::contact.contact'
-    > &
-      Schema.Attribute.Private;
-    message: Schema.Attribute.Text & Schema.Attribute.Required;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
+    >;
+    pageTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
-    subject: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    website: Schema.Attribute.String;
   };
 }
 
@@ -931,28 +1012,6 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
   attributes: {
     categoryBanner: Schema.Attribute.Media<'images'>;
-    contactAddress: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    contactEmail: Schema.Attribute.Email &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    contactMapLat: Schema.Attribute.Float &
-      Schema.Attribute.DefaultTo<23.8103968>;
-    contactMapLng: Schema.Attribute.Float &
-      Schema.Attribute.DefaultTo<90.41256666>;
-    contactPhone: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1002,6 +1061,48 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiHeaderTopHeaderTop extends Struct.SingleTypeSchema {
+  collectionName: 'header_tops';
+  info: {
+    description: 'Top-most navigation and social links';
+    displayName: 'Header Top';
+    pluralName: 'header-tops';
+    singularName: 'header-top';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    contactUrl: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    donationUrl: Schema.Attribute.String;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::header-top.header-top'
+    >;
+    loginUrl: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    signUpUrl: Schema.Attribute.String;
+    socialFacebookUrl: Schema.Attribute.String;
+    socialInstagramUrl: Schema.Attribute.String;
+    socialTwitterUrl: Schema.Attribute.String;
+    socialVimeoUrl: Schema.Attribute.String;
+    socialVkUrl: Schema.Attribute.String;
+    socialYoutubeUrl: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHeaderHeader extends Struct.SingleTypeSchema {
   collectionName: 'headers';
   info: {
@@ -1029,6 +1130,7 @@ export interface ApiHeaderHeader extends Struct.SingleTypeSchema {
         'navigation.menu-button',
         'navigation.dropdown-menu',
         'navigation.mega-menu',
+        'navigation.video-menu',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1067,36 +1169,6 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     showTrendingLimit: Schema.Attribute.Integer;
     tickerSpeed: Schema.Attribute.Integer;
     trendingSectionTitle: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiInstagramInstagram extends Struct.CollectionTypeSchema {
-  collectionName: 'instagrams';
-  info: {
-    displayName: 'Instagram Gallery';
-    pluralName: 'instagrams';
-    singularName: 'instagram';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    link: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::instagram.instagram'
-    > &
-      Schema.Attribute.Private;
-    order: Schema.Attribute.Integer;
-    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1887,9 +1959,9 @@ declare module '@strapi/strapi' {
       'api::faq.faq': ApiFaqFaq;
       'api::footer.footer': ApiFooterFooter;
       'api::global.global': ApiGlobalGlobal;
+      'api::header-top.header-top': ApiHeaderTopHeaderTop;
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
-      'api::instagram.instagram': ApiInstagramInstagram;
       'api::latest-video-news.latest-video-news': ApiLatestVideoNewsLatestVideoNews;
       'api::poll.poll': ApiPollPoll;
       'api::post.post': ApiPostPost;
