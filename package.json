@@ -30,6 +30,7 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "strapi-plugin-ckeditor": "^0.1.0",
+    "strapi-plugin-comments": "^3.2.2",
     "strapi-plugin-redis": "^1.1.0",
     "styled-components": "^6.0.0"
   },

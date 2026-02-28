@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_navigation_social_links",
+  "info": {
+    "displayName": "Social Link",
+    "icon": "link",
+    "description": "A social media link with icon class and URL"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -65,28 +65,6 @@
       ],
       "description": "Recommended size: 1200x675px (Ratio 16:9)"
     },
-    "isFeatured": {
-      "type": "boolean",
-      "default": false
-    },
-    "isTrending": {
-      "type": "boolean",
-      "default": false
-    },
-    "isPopular": {
-      "type": "boolean",
-      "default": false
-    },
-    "videoUrl": {
-      "type": "string"
-    },
-    "rating": {
-      "type": "decimal"
-    },
-    "viewCount": {
-      "type": "integer",
-      "default": 0
-    },
     "category": {
       "type": "relation",
       "relation": "manyToOne",
@@ -105,20 +83,59 @@
       "target": "api::tag.tag",
       "inversedBy": "articles"
     },
-    "comments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::comment.comment",
-      "mappedBy": "article"
+    "videoUrl": {
+      "type": "string"
     },
-    "blocks": {
-      "type": "dynamiczone",
-      "components": [
-        "shared.media",
-        "shared.quote",
-        "shared.rich-text",
-        "shared.slider"
-      ]
+    "isTopNews": {
+      "type": "boolean",
+      "default": false
+    },
+    "isHeadline": {
+      "type": "boolean",
+      "default": false
+    },
+    "isTopSlider": {
+      "type": "boolean",
+      "default": false
+    },
+    "isMiddleSlider": {
+      "type": "boolean",
+      "default": false
+    },
+    "isMostRead": {
+      "type": "boolean",
+      "default": false
+    },
+    "isPopularNews": {
+      "type": "boolean",
+      "default": false
+    },
+    "isTechInnovation": {
+      "type": "boolean",
+      "default": false
+    },
+    "isEditorsChoice": {
+      "type": "boolean",
+      "default": false
+    },
+    "isRecentPost": {
+      "type": "boolean",
+      "default": false
+    },
+    "isRecentReview": {
+      "type": "boolean",
+      "default": false
+    },
+    "rating": {
+      "type": "decimal"
+    },
+    "viewCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "isAboutPage": {
+      "type": "boolean",
+      "default": false
     },
     "seo": {
       "type": "component",

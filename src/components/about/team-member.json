@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_about_team_members",
+  "info": {
+    "displayName": "Team Member",
+    "icon": "user",
+    "description": "A team member with photo, name, role, and social links"
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "string"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "socialLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "about.social-link"
+    }
+  }
+}

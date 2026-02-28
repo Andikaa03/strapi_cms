@@ -1,5 +1,33 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface AboutSocialLink extends Struct.ComponentSchema {
+  collectionName: 'components_about_social_links';
+  info: {
+    description: 'A dynamic social media link with customizable icon';
+    displayName: 'Social Link';
+    icon: 'link';
+  };
+  attributes: {
+    icon: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface AboutTeamMember extends Struct.ComponentSchema {
+  collectionName: 'components_about_team_members';
+  info: {
+    description: 'A team member with photo, name, role, and social links';
+    displayName: 'Team Member';
+    icon: 'user';
+  };
+  attributes: {
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    photo: Schema.Attribute.Media<'images'>;
+    role: Schema.Attribute.String;
+    socialLinks: Schema.Attribute.Component<'about.social-link', true>;
+  };
+}
+
 export interface EpaperPage extends Struct.ComponentSchema {
   collectionName: 'components_epaper_pages';
   info: {
@@ -73,6 +101,26 @@ export interface NavigationDropdownMenu extends Struct.ComponentSchema {
   };
 }
 
+export interface NavigationHeaderLink extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_header_links';
+  info: {
+    description: 'A header navigation link with label and URL';
+    displayName: 'Header Link';
+    icon: 'link';
+  };
+  attributes: {
+    icon: Schema.Attribute.Media<'images'>;
+    label: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface NavigationMegaMenu extends Struct.ComponentSchema {
   collectionName: 'components_navigation_mega_menus';
   info: {
@@ -141,6 +189,19 @@ export interface NavigationNestedDropdown extends Struct.ComponentSchema {
   attributes: {
     subMenus: Schema.Attribute.Component<'navigation.base-link', true>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface NavigationSocialLink extends Struct.ComponentSchema {
+  collectionName: 'components_navigation_social_links';
+  info: {
+    description: 'A social media link with icon class and URL';
+    displayName: 'Social Link';
+    icon: 'link';
+  };
+  attributes: {
+    icon: Schema.Attribute.Media<'images'>;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -248,16 +309,20 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'about.social-link': AboutSocialLink;
+      'about.team-member': AboutTeamMember;
       'epaper.page': EpaperPage;
       'faq.faq-item': FaqFaqItem;
       'navigation.base-link': NavigationBaseLink;
       'navigation.dropdown-header': NavigationDropdownHeader;
       'navigation.dropdown-menu': NavigationDropdownMenu;
+      'navigation.header-link': NavigationHeaderLink;
       'navigation.mega-menu': NavigationMegaMenu;
       'navigation.mega-menu-link': NavigationMegaMenuLink;
       'navigation.mega-menu-section': NavigationMegaMenuSection;
       'navigation.menu-button': NavigationMenuButton;
       'navigation.nested-dropdown': NavigationNestedDropdown;
+      'navigation.social-link': NavigationSocialLink;
       'navigation.video-menu': NavigationVideoMenu;
       'navigation.video-menu-item': NavigationVideoMenuItem;
       'poll.option': PollOption;

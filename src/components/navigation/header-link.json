@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_navigation_header_links",
+  "info": {
+    "displayName": "Header Link",
+    "icon": "link",
+    "description": "A header navigation link with label and URL"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
