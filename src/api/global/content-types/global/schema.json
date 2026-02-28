@@ -46,20 +46,6 @@
       "repeatable": false,
       "component": "shared.seo"
     },
-    "heroBanner": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"],
-      "description": "Recommended size: 1920x1000px"
-    },
-    "categoryBanner": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"],
-      "description": "Recommended size: 1200x300px"
-    },
     "socialRssSubscribers": {
       "type": "integer",
       "default": 0

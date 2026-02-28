@@ -16,35 +16,22 @@
     }
   },
   "attributes": {
-    "contactUrl": {
-      "type": "string"
+    "socialLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.social-link"
     },
-    "donationUrl": {
-      "type": "string"
+    "leftMenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.header-link",
+      "pluginOptions": { "i18n": { "localized": true } }
     },
-    "signUpUrl": {
-      "type": "string"
-    },
-    "loginUrl": {
-      "type": "string"
-    },
-    "socialFacebookUrl": {
-      "type": "string"
-    },
-    "socialTwitterUrl": {
-      "type": "string"
-    },
-    "socialVkUrl": {
-      "type": "string"
-    },
-    "socialInstagramUrl": {
-      "type": "string"
-    },
-    "socialYoutubeUrl": {
-      "type": "string"
-    },
-    "socialVimeoUrl": {
-      "type": "string"
+    "rightMenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.header-link",
+      "pluginOptions": { "i18n": { "localized": true } }
     }
   }
 }

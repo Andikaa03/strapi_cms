@@ -54,4 +54,16 @@ export default ({ env }) => ({
       },
     },
   },
+  comments: {
+    enabled: true,
+    config: {
+      badWords: false,
+      moderatorRoles: ['Authenticated'],
+      approvalFlow: ['api::article.article'],
+      entryLabel: {
+        '*': ['title', 'slug'],
+      },
+      enabledCollections: ['api::article.article'],
+    },
+  },
 });
