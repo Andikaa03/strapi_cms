@@ -39,22 +39,6 @@
         "images"
       ]
     },
-    "content": {
-      "type": "blocks",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "mission": {
-      "type": "blocks",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "missionTitle": {
       "type": "string",
       "pluginOptions": {
@@ -65,6 +49,14 @@
     },
     "missionSubtitle": {
       "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "mission": {
+      "type": "blocks",
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -112,44 +104,6 @@
           "localized": true
         }
       }
-    },
-    "blocks": {
-      "type": "dynamiczone",
-      "components": [
-        "shared.media",
-        "shared.quote",
-        "shared.rich-text",
-        "shared.slider"
-      ]
-    },
-    "logo": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "siteDescription": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "contactAddress": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "contactPhone": {
-      "type": "string"
-    },
-    "contactEmail": {
-      "type": "email"
     }
   }
 }
