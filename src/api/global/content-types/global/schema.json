@@ -91,6 +91,9 @@
     },
     "socialPinterestUrl": {
       "type": "string"
+    },
+    "socialLinkedinUrl": {
+      "type": "string"
     }
   }
 }
