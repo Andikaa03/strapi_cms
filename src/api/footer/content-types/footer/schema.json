@@ -65,7 +65,7 @@
         }
       }
     },
-    "privacyLink": {
+    "newsletterPlaceholder": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -73,7 +73,7 @@
         }
       }
     },
-    "contactLink": {
+    "newsletterButtonText": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -81,7 +81,7 @@
         }
       }
     },
-    "aboutLink": {
+    "socialTitle": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -89,7 +89,7 @@
         }
       }
     },
-    "donationLink": {
+    "categoryTitle": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -97,8 +97,10 @@
         }
       }
     },
-    "faqLink": {
-      "type": "string",
+    "footerCategoryLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.base-link",
       "pluginOptions": {
         "i18n": {
           "localized": true
