@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "share_counts",
+  "info": {
+    "singularName": "share-count",
+    "pluralName": "share-counts",
+    "displayName": "Share Count",
+    "description": "Tracks social share counts per article"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    },
+    "facebook": {
+      "type": "integer",
+      "default": 0
+    },
+    "twitter": {
+      "type": "integer",
+      "default": 0
+    },
+    "linkedin": {
+      "type": "integer",
+      "default": 0
+    },
+    "pinterest": {
+      "type": "integer",
+      "default": 0
+    },
+    "whatsapp": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

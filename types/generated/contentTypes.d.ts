@@ -1454,6 +1454,40 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiShareCountShareCount extends Struct.CollectionTypeSchema {
+  collectionName: 'share_counts';
+  info: {
+    description: 'Tracks social share counts per article';
+    displayName: 'Share Count';
+    pluralName: 'share-counts';
+    singularName: 'share-count';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    facebook: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    linkedin: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::share-count.share-count'
+    > &
+      Schema.Attribute.Private;
+    pinterest: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    twitter: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whatsapp: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+  };
+}
+
 export interface ApiSidebarSidebar extends Struct.SingleTypeSchema {
   collectionName: 'sidebars';
   info: {
@@ -2177,6 +2211,7 @@ declare module '@strapi/strapi' {
       'api::not-found.not-found': ApiNotFoundNotFound;
       'api::poll.poll': ApiPollPoll;
       'api::post.post': ApiPostPost;
+      'api::share-count.share-count': ApiShareCountShareCount;
       'api::sidebar.sidebar': ApiSidebarSidebar;
       'api::tag.tag': ApiTagTag;
       'plugin::comments.comment': PluginCommentsComment;
