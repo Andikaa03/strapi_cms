@@ -913,12 +913,6 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    aboutLink: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     appDescription: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -937,7 +931,7 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    contactLink: Schema.Attribute.String &
+    categoryTitle: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -952,13 +946,10 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    donationLink: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    faqLink: Schema.Attribute.String &
+    footerCategoryLinks: Schema.Attribute.Component<
+      'navigation.base-link',
+      true
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -978,13 +969,19 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    newsletterText: Schema.Attribute.String &
+    newsletterButtonText: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    privacyLink: Schema.Attribute.String &
+    newsletterPlaceholder: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    newsletterText: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -992,6 +989,12 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
       }>;
     publishedAt: Schema.Attribute.DateTime;
     socialLinks: Schema.Attribute.Component<'shared.social-link', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    socialTitle: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1048,6 +1051,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     socialInstagramFollowers: Schema.Attribute.Integer &
       Schema.Attribute.DefaultTo<0>;
     socialInstagramUrl: Schema.Attribute.String;
+    socialLinkedinUrl: Schema.Attribute.String;
     socialPinterestFollowers: Schema.Attribute.Integer &
       Schema.Attribute.DefaultTo<0>;
     socialPinterestUrl: Schema.Attribute.String;
@@ -1251,6 +1255,89 @@ export interface ApiLatestVideoNewsLatestVideoNews
           localized: true;
         };
       }>;
+  };
+}
+
+export interface ApiNewsletterNewsletter extends Struct.CollectionTypeSchema {
+  collectionName: 'newsletters';
+  info: {
+    displayName: 'Newsletter';
+    pluralName: 'newsletters';
+    singularName: 'newsletter';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::newsletter.newsletter'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    source: Schema.Attribute.String;
+    subscribed_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNotFoundNotFound extends Struct.SingleTypeSchema {
+  collectionName: 'not_founds';
+  info: {
+    description: 'Not Found page settings';
+    displayName: 'Not Found';
+    pluralName: 'not-founds';
+    singularName: 'not-found';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::not-found.not-found'
+    >;
+    notFoundButtonLabel: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    notFoundSubtitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    notFoundTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'404'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -2086,6 +2173,8 @@ declare module '@strapi/strapi' {
       'api::header.header': ApiHeaderHeader;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::latest-video-news.latest-video-news': ApiLatestVideoNewsLatestVideoNews;
+      'api::newsletter.newsletter': ApiNewsletterNewsletter;
+      'api::not-found.not-found': ApiNotFoundNotFound;
       'api::poll.poll': ApiPollPoll;
       'api::post.post': ApiPostPost;
       'api::sidebar.sidebar': ApiSidebarSidebar;

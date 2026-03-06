@@ -66,4 +66,22 @@ export default ({ env }) => ({
       enabledCollections: ['api::article.article'],
     },
   },
+  // Email plugin with AWS SES provider
+  // Only activates when AWS credentials are set in .env
+  ...(env('AWS_SES_ACCESS_KEY_ID') ? {
+    email: {
+      config: {
+        provider: '@strapi/provider-email-amazon-ses',
+        providerOptions: {
+          key: env('AWS_SES_ACCESS_KEY_ID'),
+          secret: env('AWS_SES_SECRET_ACCESS_KEY'),
+          amazon: `https://email.${env('AWS_SES_REGION', 'ap-southeast-1')}.amazonaws.com`,
+        },
+        settings: {
+          defaultFrom: env('AWS_SES_DEFAULT_FROM', 'noreply@shottyodharaprotidin.com'),
+          defaultReplyTo: env('AWS_SES_DEFAULT_REPLY_TO', 'noreply@shottyodharaprotidin.com'),
+        },
+      },
+    },
+  } : {}),
 });
