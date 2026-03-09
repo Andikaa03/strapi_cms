@@ -1,11 +1,11 @@
 {
   "kind": "singleType",
-  "collectionName": "abouts",
+  "collectionName": "privacy_policies",
   "info": {
     "singularName": "privacy-policy",
-    "pluralName": "abouts",
+    "pluralName": "privacy-policies",
     "displayName": "Privacy Policy",
-    "description": "Write about yourself and the content you create"
+    "description": "Privacy policy content"
   },
   "options": {
     "draftAndPublish": false
@@ -39,65 +39,7 @@
         "images"
       ]
     },
-    "missionTitle": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "missionSubtitle": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "mission": {
-      "type": "blocks",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "vision": {
-      "type": "blocks",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "teamSectionTitle": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "teamMembers": {
-      "type": "component",
-      "repeatable": true,
-      "component": "about.team-member",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "historyTitle": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "history": {
+    "content": {
       "type": "blocks",
       "pluginOptions": {
         "i18n": {
