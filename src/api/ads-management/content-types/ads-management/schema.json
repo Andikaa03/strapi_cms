@@ -55,6 +55,18 @@
     },
     "homeSecondBannerLink": {
       "type": "string"
+    },
+    "homeSidebarBanner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "description": "Recommended size: 300x600px (Right-sidebar banner ads)"
+    },
+    "homeSidebarBannerLink": {
+      "type": "string"
     }
   }
 }
