@@ -25,7 +25,7 @@ export default ({ env }) => ({
   preview: {
   enabled: true,
   config: {
-    allowedOrigins: env("CLIENT_URL"),  // Usually your frontend application URL
+    allowedOrigins: env("STRAPI_ADMIN_URL"),  // Usually your frontend application URL
     // …
         }
   },

@@ -8,7 +8,7 @@
     "description": "Tags used for article grouping"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {
     "i18n": {

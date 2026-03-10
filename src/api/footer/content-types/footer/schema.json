@@ -7,7 +7,7 @@
     "displayName": "Footer"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {
     "i18n": {
