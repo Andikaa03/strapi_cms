@@ -756,7 +756,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
   attributes: {
     articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
-    children: Schema.Attribute.Relation<'oneToMany', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -780,7 +779,10 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    parent: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
+    parentCategory: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::category.category'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     showInMenu: Schema.Attribute.Boolean &
       Schema.Attribute.SetPluginOptions<{
@@ -1229,7 +1231,7 @@ export interface ApiHeaderHeader extends Struct.SingleTypeSchema {
     singularName: 'header';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -1277,7 +1279,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     singularName: 'home-page';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
