@@ -8,7 +8,7 @@
     "description": "Polls for user voting"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {
     "i18n": {
