@@ -9,42 +9,57 @@ export default factories.createCoreController('api::poll.poll', ({ strapi }) => 
       try {
         const { id } = ctx.params;
         const { optionIndex } = ctx.request.body;
+        
+        console.log(`Voting for poll ${id}, option index: ${optionIndex}`);
   
-        if (typeof optionIndex !== 'number') {
-          return ctx.badRequest('optionIndex is required and must be a number');
+        if (optionIndex === undefined || optionIndex === null) {
+          return ctx.badRequest('optionIndex is required');
         }
   
-        // Fetch the existing poll with its options
-        const poll: any = await strapi.entityService.findOne('api::poll.poll', id, {
+        // Fetch the existing poll with its options using Documents Service
+        const poll: any = await strapi.documents('api::poll.poll').findOne({
+          documentId: id,
           populate: ['options'],
         });
   
         if (!poll) {
-          return ctx.notFound('Poll not found');
+          return ctx.notFound(`Poll ${id} not found`);
         }
   
-        if (!poll.options || optionIndex < 0 || optionIndex >= poll.options.length) {
+        const idx = parseInt(optionIndex);
+        if (!poll.options || idx < 0 || idx >= poll.options.length) {
           return ctx.badRequest('Invalid optionIndex');
         }
   
         // Increment the votes for the selected option
         const updatedOptions = poll.options.map((opt: any, index: number) => {
-          if (index === optionIndex) {
-            return { ...opt, votes: (opt.votes || 0) + 1 };
+          if (index === idx) {
+            return {
+              id: opt.id,
+              text: opt.text,
+              voteCount: (parseInt(opt.voteCount) || 0) + 1 
+            };
           }
-          return { ...opt };
+          return {
+            id: opt.id,
+            text: opt.text,
+            voteCount: parseInt(opt.voteCount) || 0
+          };
         });
   
         // Update the poll with the new options
-        const updatedPoll = await strapi.entityService.update('api::poll.poll', id, {
+        const updatedPoll = await strapi.documents('api::poll.poll').update({
+          documentId: id,
           data: {
+            totalVotes: (parseInt(poll.totalVotes) || 0) + 1,
             options: updatedOptions,
           },
         });
   
         return { data: updatedPoll };
       } catch (err) {
-        ctx.throw(500, err);
+        console.error('Error in vote controller:', err);
+        ctx.throw(500, err.message || 'Internal Server Error');
       }
     },
 }));
