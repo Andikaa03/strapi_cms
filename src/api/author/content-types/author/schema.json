@@ -10,23 +10,47 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "display_name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "Slug": {
       "type": "uid",
       "targetField": "display_name",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "email": {
-      "type": "email"
+      "type": "email",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "Avatar": {
       "type": "media",
@@ -34,11 +58,21 @@
       "required": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "bio": {
       "type": "text",
-      "default": "সত্যধারা প্রতিদিনের অফিসিয়াল নিউজ ডেস্ক।"
+      "default": "সত্যধারা প্রতিদিনের অফিসিয়াল নিউজ ডেস্ক।",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "role": {
       "type": "enumeration",
@@ -49,11 +83,21 @@
         "bureau",
         "guest",
         "agency"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "is_public": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "articles": {
       "type": "relation",

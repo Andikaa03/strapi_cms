@@ -18,6 +18,7 @@
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^7.0.0",
     "@aws-sdk/client-ses": "^3.1003.0",
+    "@strapi-community/plugin-seo": "^2.1.1",
     "@strapi/plugin-cloud": "5.35.0",
     "@strapi/plugin-users-permissions": "5.35.0",
     "@strapi/provider-email-amazon-ses": "^5.38.0",
@@ -33,7 +34,9 @@
     "react-router-dom": "^6.0.0",
     "strapi-plugin-ckeditor": "^0.1.0",
     "strapi-plugin-comments": "^3.2.2",
+    "strapi-plugin-publisher": "^2.0.7",
     "strapi-plugin-redis": "^1.1.0",
+    "strapi-plugin-webp-converter": "^1.0.4",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {

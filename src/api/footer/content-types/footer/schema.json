@@ -7,7 +7,7 @@
     "displayName": "Footer"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {
     "i18n": {
@@ -130,15 +130,7 @@
         }
       }
     },
-    "contactAddress": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "contactEmail": {
+    "editorialName": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -146,7 +138,55 @@
         }
       }
     },
-    "contactPhone": {
+    "editorialOffice": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "editorialAddress1": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "editorialAddress2": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "editorialPhone": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "editorialEmail": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "editorialEditor": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "editorialPublisher": {
       "type": "string",
       "pluginOptions": {
         "i18n": {

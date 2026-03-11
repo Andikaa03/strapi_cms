@@ -23,13 +23,17 @@ export default ({ env }) => ({
   },
 
   preview: {
-  enabled: true,
-  config: {
-    allowedOrigins: env("CLIENT_URL"),  // Usually your frontend application URL
-    // …
-        }
+    enabled: true,
+    config: {
+      allowedOrigins: env("PREVIEW_FRONTEND_URL", "http://localhost:3000"),
+      async handler(uid, { documentId, locale, status }) {
+        const clientUrl = env("PREVIEW_FRONTEND_URL", "http://localhost:3000");
+        const secret = env("PREVIEW_SECRET", "");
+        // Pass type so the Next.js preview route knows where to redirect
+        return `${clientUrl}/api/preview?secret=${secret}&slug=${documentId}&locale=${locale}&type=${uid}`;
+      },
+    },
   },
   // Required for production admin URL
   url: env('STRAPI_ADMIN_URL', '/admin'),
 });
-

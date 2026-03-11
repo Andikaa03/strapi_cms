@@ -84,4 +84,13 @@ export default ({ env }) => ({
       },
     },
   } : {}),
+  seo: {
+    enabled: true,
+  },
+  publisher: {
+    enabled: true,
+  },
+  'webp-converter': {
+    enabled: true,
+  },
 });

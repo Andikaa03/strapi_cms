@@ -36,6 +36,14 @@
       "target": "api::article.article",
       "mappedBy": "tags"
     },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "color": {
       "type": "string"
     }
