@@ -8,12 +8,24 @@
   "options": {},
   "attributes": {
     "icon": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "type": "enumeration",
+      "enum": [
+        "facebook-f",
+        "twitter",
+        "vk",
+        "instagram",
+        "youtube",
+        "vimeo-v",
+        "linkedin",
+        "pinterest",
+        "whatsapp",
+        "tiktok",
+        "discord",
+        "telegram",
+        "reddit"
+      ],
+      "default": "facebook-f",
+      "required": true
     },
     "url": {
       "type": "string",

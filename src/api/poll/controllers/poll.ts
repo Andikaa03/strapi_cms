@@ -56,6 +56,11 @@ export default factories.createCoreController('api::poll.poll', ({ strapi }) => 
           },
         });
   
+        // Auto-publish the draft changes so it instantly reflects on the frontend
+        await strapi.documents('api::poll.poll').publish({
+          documentId: id,
+        });
+  
         return { data: updatedPoll };
       } catch (err) {
         console.error('Error in vote controller:', err);
