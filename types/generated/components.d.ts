@@ -200,7 +200,25 @@ export interface NavigationSocialLink extends Struct.ComponentSchema {
     icon: 'link';
   };
   attributes: {
-    icon: Schema.Attribute.Media<'images'>;
+    icon: Schema.Attribute.Enumeration<
+      [
+        'facebook-f',
+        'twitter',
+        'vk',
+        'instagram',
+        'youtube',
+        'vimeo-v',
+        'linkedin',
+        'pinterest',
+        'whatsapp',
+        'tiktok',
+        'discord',
+        'telegram',
+        'reddit',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'facebook-f'>;
     url: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
