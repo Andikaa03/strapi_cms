@@ -29,7 +29,12 @@
       "type": "component",
       "repeatable": true,
       "component": "poll.option",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "isActive": {
       "type": "boolean",

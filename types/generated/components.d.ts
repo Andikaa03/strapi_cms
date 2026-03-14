@@ -257,7 +257,13 @@ export interface PollOption extends Struct.ComponentSchema {
     displayName: 'Poll Option';
   };
   attributes: {
-    text: Schema.Attribute.String & Schema.Attribute.Required;
+    text: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     voteCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
   };
 }
