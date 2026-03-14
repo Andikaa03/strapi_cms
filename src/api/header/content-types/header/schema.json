@@ -40,6 +40,18 @@
           "localized": true
         }
       }
+    },
+    "mobileMenu": {
+      "type": "dynamiczone",
+      "components": [
+        "navigation.base-link",
+        "navigation.dropdown-menu"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

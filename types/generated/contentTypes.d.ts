@@ -1264,6 +1264,14 @@ export interface ApiHeaderHeader extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+    mobileMenu: Schema.Attribute.DynamicZone<
+      ['navigation.base-link', 'navigation.dropdown-menu']
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
