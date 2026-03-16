@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_epaper_zones",
+  "info": {
+    "displayName": "Zone",
+    "icon": "apps",
+    "description": "Interactive clickable area on ePaper image"
+  },
+  "options": {},
+  "attributes": {
+    "top": {
+      "type": "float"
+    },
+    "left": {
+      "type": "float"
+    },
+    "width": {
+      "type": "float"
+    },
+    "height": {
+      "type": "float"
+    },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::epaper-article.epaper-article"
+    }
+  }
+}
