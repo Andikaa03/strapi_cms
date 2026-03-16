@@ -31,37 +31,70 @@ export default factories.createCoreController('api::poll.poll', ({ strapi }) => 
           return ctx.badRequest('Invalid optionIndex');
         }
   
-        // Increment the votes for the selected option
-        const updatedOptions = poll.options.map((opt: any, index: number) => {
-          if (index === idx) {
-            return {
-              id: opt.id,
-              text: opt.text,
-              voteCount: (parseInt(opt.voteCount) || 0) + 1 
-            };
+        // Update the poll for ALL localized versions
+        const allLocales = await strapi.documents('api::poll.poll').findMany({
+          filters: { documentId: id },
+          locale: '*', // Get all locales in Strapi 5
+          populate: ['options'],
+          status: 'published' // Make sure we get published ones
+        });
+
+        console.log(`Poll ID: ${id}. Found ${allLocales.length} localized versions.`);
+        allLocales.forEach(l => console.log(` - Locale: ${l.locale}, Options Count: ${l.options?.length}`));
+
+        let updatedEntryForCurrentLocale = null;
+
+        for (const p of allLocales) {
+          console.log(`Syncing locale: ${p.locale} (Option Index: ${idx})`);
+          
+          // Sync by index: only update if the locale has enough options
+          if (!p.options || idx >= p.options.length) {
+            console.log(` ! Skipping locale ${p.locale}: options length is ${p.options?.length || 0}`);
+            continue;
           }
-          return {
-            id: opt.id,
-            text: opt.text,
-            voteCount: parseInt(opt.voteCount) || 0
-          };
-        });
-  
-        // Update the poll with the new options
-        const updatedPoll = await strapi.documents('api::poll.poll').update({
-          documentId: id,
-          data: {
-            totalVotes: (parseInt(poll.totalVotes) || 0) + 1,
-            options: updatedOptions,
-          },
-        });
-  
-        // Auto-publish the draft changes so it instantly reflects on the frontend
-        await strapi.documents('api::poll.poll').publish({
-          documentId: id,
-        });
-  
-        return { data: updatedPoll };
+
+          const updatedOptions = p.options.map((opt: any, index: number) => {
+            const currentCount = Number(opt.voteCount) || 0;
+            if (index === idx) {
+              const newVoteCount = currentCount + 1;
+              console.log(`   + Index ${idx} in ${p.locale}: ${currentCount} -> ${newVoteCount}`);
+              return {
+                text: opt.text,
+                voteCount: newVoteCount 
+              };
+            }
+            return {
+              text: opt.text,
+              voteCount: currentCount
+            };
+          });
+
+          await strapi.documents('api::poll.poll').update({
+            documentId: id,
+            locale: p.locale,
+            data: {
+              totalVotes: (Number(p.totalVotes) || 0) + 1,
+              options: updatedOptions,
+            },
+          });
+
+          // Auto-publish to reflect changes instantly
+          await strapi.documents('api::poll.poll').publish({
+            documentId: id,
+            locale: p.locale,
+          });
+
+          if (p.locale === poll.locale) {
+            // Re-fetch to get the state after update for return value
+            updatedEntryForCurrentLocale = await strapi.documents('api::poll.poll').findOne({
+              documentId: id,
+              locale: p.locale,
+              populate: ['options'],
+            });
+          }
+        }
+
+        return { data: updatedEntryForCurrentLocale };
       } catch (err) {
         console.error('Error in vote controller:', err);
         ctx.throw(500, err.message || 'Internal Server Error');

@@ -28,16 +28,22 @@ export interface AboutTeamMember extends Struct.ComponentSchema {
   };
 }
 
-export interface EpaperPage extends Struct.ComponentSchema {
-  collectionName: 'components_epaper_pages';
+export interface EpaperZone extends Struct.ComponentSchema {
+  collectionName: 'components_epaper_zones';
   info: {
-    description: '';
-    displayName: 'Page';
-    icon: 'file-alt';
+    description: 'Interactive clickable area on ePaper image';
+    displayName: 'Zone';
+    icon: 'apps';
   };
   attributes: {
-    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    title: Schema.Attribute.String;
+    article: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::epaper-article.epaper-article'
+    >;
+    height: Schema.Attribute.Float;
+    left: Schema.Attribute.Float;
+    top: Schema.Attribute.Float;
+    width: Schema.Attribute.Float;
   };
 }
 
@@ -257,7 +263,13 @@ export interface PollOption extends Struct.ComponentSchema {
     displayName: 'Poll Option';
   };
   attributes: {
-    text: Schema.Attribute.String & Schema.Attribute.Required;
+    text: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     voteCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
   };
 }
@@ -342,7 +354,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'about.social-link': AboutSocialLink;
       'about.team-member': AboutTeamMember;
-      'epaper.page': EpaperPage;
+      'epaper.zone': EpaperZone;
       'faq.faq-item': FaqFaqItem;
       'navigation.base-link': NavigationBaseLink;
       'navigation.dropdown-header': NavigationDropdownHeader;

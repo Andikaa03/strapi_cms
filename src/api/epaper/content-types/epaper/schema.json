@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "epapers",
+  "info": {
+    "singularName": "epaper",
+    "pluralName": "epapers",
+    "displayName": "ePaper",
+    "description": "Simple ePaper with related articles for interactive zones"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "zones": {
+      "type": "component",
+      "repeatable": true,
+      "component": "epaper.zone"
+    }
+  }
+}
