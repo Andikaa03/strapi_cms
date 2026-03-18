@@ -5,6 +5,7 @@ export default {
         path: '/polls/:id/vote',
         handler: 'poll.vote',
         config: {
+          auth: false,
           policies: [],
           middlewares: [],
         },
