@@ -47,6 +47,10 @@
       "type": "boolean",
       "default": false
     },
+    "isSidebar": {
+      "type": "boolean",
+      "default": false
+    },
     "sortOrder": {
       "type": "integer",
       "default": 0

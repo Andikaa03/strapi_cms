@@ -766,6 +766,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
         };
       }>;
     featuredImage: Schema.Attribute.Media<'images'>;
+    isSidebar: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     isTrending: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
@@ -1081,6 +1082,12 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
         };
       }>;
     categoryTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    copyrightText: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

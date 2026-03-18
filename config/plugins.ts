@@ -43,7 +43,7 @@ export default ({ env }) => ({
   upload: {
     config: {
       provider: 'local',
-      sizeLimit: 10000000,
+      sizeLimit: 1024 * 1024 * 1024, // 1GB (Super high limit to simulate no limit)
       providerOptions: {
         // using Strapi's built-in local provider (uploads go to /public/uploads)
       },
@@ -91,6 +91,6 @@ export default ({ env }) => ({
     enabled: true,
   },
   'webp-converter': {
-    enabled: true,
+    enabled: false, // Disabled due to Windows PNG upload crash issues
   },
 });
