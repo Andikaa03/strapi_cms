@@ -4,15 +4,16 @@ const config = {
   },
   head: {
     favicon: undefined,
-    title: undefined,
+    title: 'Admin Portal',
   },
   menu: {
     logo: undefined,
   },
   translations: {
     en: {
-      'Auth.form.welcome.title': 'Welcome to Admin Portal',
+      'Auth.form.welcome.title': 'Admin Portal',
       'Auth.form.welcome.subtitle': 'Log in to your Account',
+      'app.components.LeftMenu.navbrand.title': 'Admin Portal',
     },
   },
   theme: {
