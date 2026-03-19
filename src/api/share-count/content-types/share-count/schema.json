@@ -36,6 +36,10 @@
     "whatsapp": {
       "type": "integer",
       "default": 0
+    },
+    "likes": {
+      "type": "integer",
+      "default": 0
     }
   }
 }

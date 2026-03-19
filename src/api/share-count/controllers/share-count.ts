@@ -15,18 +15,28 @@ export default factories.createCoreController('api::share-count.share-count', ({
     const { articleId, platform } = ctx.request.body as any;
 
     // Validate input
-    const validPlatforms = ['facebook', 'twitter', 'linkedin', 'pinterest', 'whatsapp'];
+    const validPlatforms = ['facebook', 'twitter', 'linkedin', 'pinterest', 'whatsapp', 'likes'];
     if (!articleId || !platform || !validPlatforms.includes(platform)) {
-      return ctx.badRequest('Invalid request. Required: articleId (documentId) and platform (facebook|twitter|linkedin|pinterest|whatsapp)');
+      return ctx.badRequest('Invalid request. Required: articleId and platform (facebook|twitter|linkedin|pinterest|whatsapp|likes)');
     }
 
     try {
-      // In Strapi 5, we receive documentId (string).
-      // We need to find the article's internal numeric id for the relation.
-      const article = await strapi.db.query('api::article.article').findOne({
-        where: { documentId: articleId },
-        select: ['id'],
-      });
+      let article = null;
+      const numericInput = Number(articleId);
+
+      if (Number.isInteger(numericInput) && numericInput > 0) {
+        article = await strapi.db.query('api::article.article').findOne({
+          where: { id: numericInput },
+          select: ['id'],
+        });
+      }
+
+      if (!article) {
+        article = await strapi.db.query('api::article.article').findOne({
+          where: { documentId: articleId },
+          select: ['id'],
+        });
+      }
 
       if (!article) {
         return ctx.notFound('Article not found');
@@ -60,6 +70,7 @@ export default factories.createCoreController('api::share-count.share-count', ({
             linkedin: 0,
             pinterest: 0,
             whatsapp: 0,
+            likes: 0,
             [platform]: 1,
           },
         });
@@ -67,6 +78,77 @@ export default factories.createCoreController('api::share-count.share-count', ({
       }
     } catch (error) {
       strapi.log.error('Share count increment error:', error);
+      return ctx.internalServerError('Failed to update share count');
+    }
+  },
+
+  /**
+   * Custom action: Decrement share/like count for a specific platform.
+   * POST /api/share-counts/decrement
+   * Body: { articleId, platform }
+   */
+  async decrement(ctx) {
+    const { articleId, platform } = ctx.request.body as any;
+
+    const validPlatforms = ['facebook', 'twitter', 'linkedin', 'pinterest', 'whatsapp', 'likes'];
+    if (!articleId || !platform || !validPlatforms.includes(platform)) {
+      return ctx.badRequest('Invalid request. Required: articleId and platform (facebook|twitter|linkedin|pinterest|whatsapp|likes)');
+    }
+
+    try {
+      let article = null;
+      const numericInput = Number(articleId);
+
+      if (Number.isInteger(numericInput) && numericInput > 0) {
+        article = await strapi.db.query('api::article.article').findOne({
+          where: { id: numericInput },
+          select: ['id'],
+        });
+      }
+
+      if (!article) {
+        article = await strapi.db.query('api::article.article').findOne({
+          where: { documentId: articleId },
+          select: ['id'],
+        });
+      }
+
+      if (!article) {
+        return ctx.notFound('Article not found');
+      }
+
+      const numericArticleId = article.id;
+
+      const existing = await strapi.db.query('api::share-count.share-count').findOne({
+        where: {
+          article: numericArticleId,
+        },
+      });
+
+      if (existing) {
+        const updated = await strapi.db.query('api::share-count.share-count').update({
+          where: { id: existing.id },
+          data: {
+            [platform]: Math.max((existing[platform] || 0) - 1, 0),
+          },
+        });
+        return { data: updated };
+      }
+
+      const created = await strapi.db.query('api::share-count.share-count').create({
+        data: {
+          article: numericArticleId,
+          facebook: 0,
+          twitter: 0,
+          linkedin: 0,
+          pinterest: 0,
+          whatsapp: 0,
+          likes: 0,
+        },
+      });
+      return { data: created };
+    } catch (error) {
+      strapi.log.error('Share count decrement error:', error);
       return ctx.internalServerError('Failed to update share count');
     }
   },
@@ -84,16 +166,27 @@ export default factories.createCoreController('api::share-count.share-count', ({
     }
 
     try {
-      // Resolve documentId to numeric id
-      const article = await strapi.db.query('api::article.article').findOne({
-        where: { documentId: articleId },
-        select: ['id'],
-      });
+      let article = null;
+      const numericInput = Number(articleId);
+
+      if (Number.isInteger(numericInput) && numericInput > 0) {
+        article = await strapi.db.query('api::article.article').findOne({
+          where: { id: numericInput },
+          select: ['id'],
+        });
+      }
+
+      if (!article) {
+        article = await strapi.db.query('api::article.article').findOne({
+          where: { documentId: articleId },
+          select: ['id'],
+        });
+      }
 
       if (!article) {
         return {
           data: {
-            facebook: 0, twitter: 0, linkedin: 0, pinterest: 0, whatsapp: 0,
+            facebook: 0, twitter: 0, linkedin: 0, pinterest: 0, whatsapp: 0, likes: 0,
           },
         };
       }
@@ -107,7 +200,7 @@ export default factories.createCoreController('api::share-count.share-count', ({
       if (!shareCount) {
         return {
           data: {
-            facebook: 0, twitter: 0, linkedin: 0, pinterest: 0, whatsapp: 0,
+            facebook: 0, twitter: 0, linkedin: 0, pinterest: 0, whatsapp: 0, likes: 0,
           },
         };
       }
@@ -119,6 +212,7 @@ export default factories.createCoreController('api::share-count.share-count', ({
           linkedin: shareCount.linkedin || 0,
           pinterest: shareCount.pinterest || 0,
           whatsapp: shareCount.whatsapp || 0,
+          likes: shareCount.likes || 0,
         },
       };
     } catch (error) {

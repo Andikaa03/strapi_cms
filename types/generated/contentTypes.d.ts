@@ -1743,6 +1743,7 @@ export interface ApiShareCountShareCount extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     facebook: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    likes: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     linkedin: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

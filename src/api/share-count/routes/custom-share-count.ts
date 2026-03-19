@@ -15,6 +15,16 @@ export default {
       },
     },
     {
+      method: 'POST',
+      path: '/share-counts/decrement',
+      handler: 'share-count.decrement',
+      config: {
+        auth: false,
+        policies: [],
+        middlewares: [],
+      },
+    },
+    {
       method: 'GET',
       path: '/share-counts/by-article/:articleId',
       handler: 'share-count.findByArticle',
