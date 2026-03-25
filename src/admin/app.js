@@ -96,7 +96,7 @@ const config = {
   },
   translations: {
     en: {
-      'Auth.form.welcome.title': 'Shottyodhara Protidin Admin',
+        'Auth.form.welcome.title': 'Welcome to Admin Portal',
       'Auth.form.welcome.subtitle': 'Log in to your Account',
       'app.components.LeftMenu.navbrand.title': 'Shottyodhara Protidin',
     },
