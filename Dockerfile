@@ -1,17 +1,15 @@
-FROM node:20-alpine
+FROM node:20-bullseye-slim
 
 WORKDIR /app
 
-# Install full dependencies (build + runtime)
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm ci
 
 # Copy full project
 COPY . .
 
-# Build Strapi admin
 ENV NODE_ENV=production
-RUN npm run build
+RUN npm run build && npm prune --omit=dev && npm cache clean --force
 
 EXPOSE 1337
 

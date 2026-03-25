@@ -16,7 +16,7 @@
     "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
-    "@_sh/strapi-plugin-ckeditor": "^7.0.0",
+    "@_sh/strapi-plugin-ckeditor": "^7.1.0",
     "@aws-sdk/client-ses": "^3.1003.0",
     "@strapi-community/plugin-seo": "^2.1.1",
     "@strapi/plugin-cloud": "5.35.0",
@@ -32,7 +32,6 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "strapi-plugin-ckeditor": "^0.1.0",
     "strapi-plugin-comments": "^3.2.2",
     "strapi-plugin-publisher": "^2.0.7",
     "strapi-plugin-redis": "^1.1.0",
@@ -43,6 +42,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "esbuild": "^0.27.4",
     "typescript": "^5"
   },
   "engines": {

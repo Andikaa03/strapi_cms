@@ -37,15 +37,15 @@
     },
     "content": {
       "type": "customField",
-      "customField": "plugin::ckeditor5.CKEditor",
-      "options": {
-        "output": "HTML",
-        "preset": "defaultHtml"
-      },
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
+      },
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "output": "HTML",
+        "preset": "defaultHtml"
       },
       "required": true
     },
@@ -62,8 +62,7 @@
       "multiple": false,
       "allowedTypes": [
         "images"
-      ],
-      "description": "Recommended size: 1200x675px (Ratio 16:9)"
+      ]
     },
     "category": {
       "type": "relation",
@@ -77,14 +76,32 @@
       "target": "api::author.author",
       "inversedBy": "articles"
     },
+    "videoUrl": {
+      "type": "string"
+    },
     "tags": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::tag.tag",
-      "inversedBy": "articles"
+      "inversedBy": "articles",
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        },
+        "content-type-builder": {
+          "visible": false
+        }
+      }
     },
-    "videoUrl": {
-      "type": "string"
+    "tagsInput": {
+      "type": "customField",
+      "displayName": "Tags",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "customField": "global::tag-picker"
     },
     "isTopNews": {
       "type": "boolean",
@@ -122,25 +139,10 @@
       "type": "boolean",
       "default": false
     },
-    "isRecentReview": {
-      "type": "boolean",
-      "default": false
-    },
-    "rating": {
-      "type": "decimal"
-    },
-    "viewCount": {
-      "type": "integer",
-      "default": 0
-    },
-    "isAboutPage": {
-      "type": "boolean",
-      "default": false
-    },
     "seo": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }

@@ -1,61 +1,40 @@
-# 🚀 Getting started with Strapi
+# Strapi CMS Backend
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+## Local Development
 
-### `develop`
-
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
-
-```
+```bash
+npm install
 npm run develop
-# or
-yarn develop
 ```
 
-### `start`
+## Production Environment
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+Create `.env` from `.env.example` and set at minimum:
 
-```
-npm run start
-# or
-yarn start
-```
+- `HOST`, `PORT`, `PUBLIC_URL`
+- `APP_KEYS`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET`, `TRANSFER_TOKEN_SALT`, `JWT_SECRET`, `ENCRYPTION_KEY`
+- Database settings (`DATABASE_CLIENT=postgres`, host/port/name/user/password)
+- AWS/S3 and SES credentials if media/email features are enabled
+- `CLOUDFLARE_TURNSTILE_SECRET_KEY` (real key in production)
 
-### `build`
+## Production Build and Start
 
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
+```bash
+npm ci
 npm run build
-# or
-yarn build
+npm run start
 ```
 
-## ⚙️ Deployment
+## Docker (Production)
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
+```bash
+docker build -t shottyodhara-strapi .
+docker run --rm -p 1337:1337 \
+	--env-file .env \
+	shottyodhara-strapi
 ```
-yarn strapi deploy
-```
 
-## 📚 Learn more
+Notes:
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+- Use PostgreSQL for production (not sqlite).
+- Ensure persistent storage is configured for uploads if using local provider.
