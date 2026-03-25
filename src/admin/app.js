@@ -89,7 +89,7 @@ const config = {
   },
   head: {
     favicon: undefined,
-    title: 'Admin Portal',
+    title: 'Shottyodhara Protidin Admin',
   },
   menu: {
     logo: undefined,
