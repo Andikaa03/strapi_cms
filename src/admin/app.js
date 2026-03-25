@@ -141,6 +141,7 @@ export default {
     });
   },
   bootstrap() {
+    document.title = 'Shottyodhara Protidin Admin';
     ensureCkeditorHeightStyles();
 
     const STATUS_VALUES = ['PENDING', 'APPROVED', 'REJECTED'];
