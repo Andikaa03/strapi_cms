@@ -120,6 +120,7 @@ const config = {
 export default {
   config,
   register(app) {
+    document.title = 'Shottyodhara Protidin Admin';
     setPluginConfig({
       presets: [ckeditorDefaultHtmlPreset],
     });
@@ -141,7 +142,6 @@ export default {
     });
   },
   bootstrap() {
-    document.title = 'Shottyodhara Protidin Admin';
     ensureCkeditorHeightStyles();
 
     const STATUS_VALUES = ['PENDING', 'APPROVED', 'REJECTED'];
