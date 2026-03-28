@@ -614,6 +614,8 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     isMostRead: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     isPopularNews: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     isRecentPost: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    isRecentReview: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     isTechInnovation: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<false>;
     isTopNews: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -934,63 +936,10 @@ export interface ApiContactContact extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiEpaperArticleEpaperArticle
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'epaper_articles';
-  info: {
-    description: 'Articles for the ePaper clickable zones \u2014 renamed fields to image_view and text_view';
-    displayName: 'ePaper Article';
-    pluralName: 'epaper-articles';
-    singularName: 'epaper-article';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    image_view: Schema.Attribute.Media<'images'>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::epaper-article.epaper-article'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'title'> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    text_view: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiEpaperEpaper extends Struct.CollectionTypeSchema {
   collectionName: 'epapers';
   info: {
-    description: 'Simple ePaper with related articles for interactive zones';
+    description: 'Newspaper ePaper pages grouped by date and edition';
     displayName: 'ePaper';
     pluralName: 'epapers';
     singularName: 'epaper';
@@ -1007,17 +956,19 @@ export interface ApiEpaperEpaper extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::epaper.epaper'>;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String &
+    edition: Schema.Attribute.Enumeration<['edition-1', 'edition-2']> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
-      }>;
+      }> &
+      Schema.Attribute.DefaultTo<'edition-1'>;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::epaper.epaper'>;
+    publishDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -2465,7 +2416,6 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::contact.contact': ApiContactContact;
-      'api::epaper-article.epaper-article': ApiEpaperArticleEpaperArticle;
       'api::epaper.epaper': ApiEpaperEpaper;
       'api::faq.faq': ApiFaqFaq;
       'api::footer.footer': ApiFooterFooter;

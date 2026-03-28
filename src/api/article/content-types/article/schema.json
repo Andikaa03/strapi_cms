@@ -139,6 +139,10 @@
       "type": "boolean",
       "default": false
     },
+    "isRecentReview": {
+      "type": "boolean",
+      "default": false
+    },
     "seo": {
       "type": "component",
       "component": "shared.seo",

@@ -5,7 +5,7 @@
     "singularName": "epaper",
     "pluralName": "epapers",
     "displayName": "ePaper",
-    "description": "Simple ePaper with related articles for interactive zones"
+    "description": "Newspaper ePaper pages grouped by date and edition"
   },
   "options": {
     "draftAndPublish": true
@@ -16,8 +16,18 @@
     }
   },
   "attributes": {
-    "title": {
-      "type": "string",
+
+    "publishDate": {
+      "type": "date",
+      "required": true
+    },
+    "edition": {
+      "type": "enumeration",
+      "enum": [
+        "edition-1",
+        "edition-2"
+      ],
+      "default": "edition-1",
       "required": true,
       "pluginOptions": {
         "i18n": {

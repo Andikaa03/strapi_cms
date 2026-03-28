@@ -31,16 +31,13 @@ export interface AboutTeamMember extends Struct.ComponentSchema {
 export interface EpaperZone extends Struct.ComponentSchema {
   collectionName: 'components_epaper_zones';
   info: {
-    description: 'Interactive clickable area on ePaper image';
+    description: 'Interactive clickable area on ePaper page with cropped images';
     displayName: 'Zone';
     icon: 'apps';
   };
   attributes: {
-    article: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::epaper-article.epaper-article'
-    >;
     height: Schema.Attribute.Float;
+    images: Schema.Attribute.Media<'images', true>;
     left: Schema.Attribute.Float;
     top: Schema.Attribute.Float;
     width: Schema.Attribute.Float;
